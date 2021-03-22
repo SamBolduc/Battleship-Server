@@ -1,5 +1,6 @@
-package ca.school.battleship.handler;
+package ca.school.battleship.packet.handler;
 
+import ca.school.battleship.packet.JsonMessage;
 import ca.school.battleship.user.User;
 import ca.school.battleship.user.UserManager;
 import io.netty.channel.ChannelHandlerContext;
@@ -21,15 +22,15 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        String content = (String) msg;
-        
-        new ActionHandler(ctx, requestData);
+        System.out.println("Receving content....");
+        JsonMessage jsonMessage = (JsonMessage) msg;
+        System.out.println("content: " + jsonMessage);
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        //        super.exceptionCaught(ctx, cause);
         System.out.println("Cause: " + cause.getMessage());
+        super.exceptionCaught(ctx, cause);
     }
 
 }

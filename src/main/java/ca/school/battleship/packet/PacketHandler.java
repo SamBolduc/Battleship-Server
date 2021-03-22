@@ -24,7 +24,8 @@ public class PacketHandler {
             throw new IllegalStateException("Duplicate packet id.");
 
         try {
-            GenericPacket packet = clazz.getDeclaredConstructor(Integer.class).newInstance(id);
+            GenericPacket packet = clazz.newInstance();
+            packet.setId(id);
             this.packets.add(packet);
         } catch (Exception e) {
             e.printStackTrace();

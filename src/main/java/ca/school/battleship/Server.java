@@ -1,9 +1,10 @@
 package ca.school.battleship;
 
-import ca.school.battleship.handler.ServerHandler;
 import ca.school.battleship.packet.PacketHandler;
 import ca.school.battleship.packet.decoder.PacketDecoder;
 import ca.school.battleship.packet.encoder.PacketEncoder;
+import ca.school.battleship.packet.handler.ServerHandler;
+import ca.school.battleship.user.UserManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.netty.bootstrap.ServerBootstrap;
@@ -33,8 +34,9 @@ public class Server {
 
     public Server(int port) {
         this.port = port;
-        this.gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.VOLATILE, Modifier.STATIC).enableComplexMapKeySerialization().create();
+        this.gson = new GsonBuilder().disableHtmlEscaping().excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.VOLATILE, Modifier.STATIC).enableComplexMapKeySerialization().create();
         this.packetHandler = new PacketHandler();
+        new UserManager();
     }
 
     public static void main(String[] args) throws Exception {
