@@ -1,5 +1,7 @@
 package ca.school.battleship.packet.handler;
 
+import ca.school.battleship.Server;
+import ca.school.battleship.packet.GenericPacket;
 import ca.school.battleship.packet.JsonMessage;
 import ca.school.battleship.user.User;
 import ca.school.battleship.user.UserManager;
@@ -22,9 +24,10 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        System.out.println("Receving content....");
         JsonMessage jsonMessage = (JsonMessage) msg;
-        System.out.println("content: " + jsonMessage);
+
+        GenericPacket packet = Server.get().getGson().fromJson(jsonMessage.getContent(), Server.get().getPacketHandler().getClass(jsonMessage.getPacketId()));
+        packet.read(ctx);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package ca.school.battleship;
 
+import ca.school.battleship.game.GameManager;
 import ca.school.battleship.packet.PacketHandler;
 import ca.school.battleship.packet.decoder.PacketDecoder;
 import ca.school.battleship.packet.encoder.PacketEncoder;
@@ -19,6 +20,7 @@ import lombok.Getter;
 
 import java.lang.reflect.Modifier;
 
+@Getter
 public class Server {
     private static Server instance;
 
@@ -26,10 +28,7 @@ public class Server {
 
     private int port;
 
-    @Getter
     private Gson gson;
-
-    @Getter
     private PacketHandler packetHandler;
 
     public Server(int port) {
@@ -37,6 +36,7 @@ public class Server {
         this.gson = new GsonBuilder().disableHtmlEscaping().excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.VOLATILE, Modifier.STATIC).enableComplexMapKeySerialization().create();
         this.packetHandler = new PacketHandler();
         new UserManager();
+        new GameManager();
     }
 
     public static void main(String[] args) throws Exception {

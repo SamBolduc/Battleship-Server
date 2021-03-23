@@ -9,17 +9,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @Data
 @ToString
-public abstract class GenericPacket<T> {
+public abstract class GenericPacket {
 
     private int id;
 
-    public GenericPacket(int id) {
-        this.id = id;
-    }
+    public abstract void read(ChannelHandlerContext ctx);
 
-    public abstract void read(T packet);
-
-    public void send(ChannelHandlerContext channel, T packet) {
-        channel.writeAndFlush(Server.get().getGson().toJson(packet));
+    public void send(ChannelHandlerContext ctx) {
+        ctx.writeAndFlush(Server.get().getGson().toJson(this));
     }
 }
