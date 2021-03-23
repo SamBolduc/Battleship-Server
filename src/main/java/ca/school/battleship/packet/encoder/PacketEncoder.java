@@ -11,6 +11,8 @@ public class PacketEncoder extends MessageToByteEncoder<JsonMessage> {
 
     @Override
     protected void encode(ChannelHandlerContext ctx, JsonMessage msg, ByteBuf out) throws Exception {
-        out.writeBytes(msg.toJson().getBytes(StandardCharsets.UTF_8));
+        byte[] bytes = msg.toJson().getBytes(StandardCharsets.UTF_8);
+        out.writeInt(bytes.length);
+        out.writeBytes(bytes);
     }
 }

@@ -15,9 +15,7 @@ public class PacketDecoder extends ByteToMessageDecoder {
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) {
         int len = in.readInt();
         String content = in.readCharSequence(len, StandardCharsets.UTF_8).toString();
-        System.out.println("Content: ####" + content + "####");
         JsonMessage jsonMessage = Server.get().getGson().fromJson(content, JsonMessage.class);
-        System.out.println("Decoding message: " + jsonMessage);
         out.add(jsonMessage);
     }
 }

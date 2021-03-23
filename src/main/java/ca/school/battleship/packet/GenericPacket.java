@@ -11,11 +11,12 @@ import lombok.ToString;
 @ToString
 public abstract class GenericPacket {
 
-    private int id;
+    private transient int id;
 
     public abstract void read(ChannelHandlerContext ctx);
 
     public void send(ChannelHandlerContext ctx) {
+        this.setId(Server.get().getPacketHandler().getPacket(this.getClass()).getId());
         ctx.writeAndFlush(this.asJsonMessage());
     }
 

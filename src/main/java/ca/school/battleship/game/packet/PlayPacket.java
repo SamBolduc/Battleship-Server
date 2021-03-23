@@ -13,7 +13,5 @@ public class PlayPacket extends GenericPacket {
 
     @Override
     public void read(ChannelHandlerContext ctx) {
-        System.out.println("Reading PlayPacket !");
-        System.out.println("Username is: " + this.username);
     }
 }

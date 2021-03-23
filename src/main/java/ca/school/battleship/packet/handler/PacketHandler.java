@@ -18,6 +18,10 @@ public class PacketHandler {
         this.registerPacket(5, AttackPacket.class);
     }
 
+    public GenericPacket getPacket(Class<? extends GenericPacket> clazz) {
+        return this.packets.stream().filter(el -> el.getClass().equals(clazz)).findFirst().orElse(null);
+    }
+
     public Class<? extends GenericPacket> getClass(int packetId) {
         GenericPacket packet = this.packets.stream().filter(el -> el.getId() == packetId).findFirst().orElse(null);
 

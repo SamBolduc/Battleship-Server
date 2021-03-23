@@ -1,7 +1,6 @@
 package ca.school.battleship;
 
 import ca.school.battleship.game.GameManager;
-import ca.school.battleship.game.packet.PlayPacket;
 import ca.school.battleship.packet.decoder.PacketDecoder;
 import ca.school.battleship.packet.encoder.PacketEncoder;
 import ca.school.battleship.packet.handler.PacketHandler;
@@ -58,11 +57,7 @@ public class Server {
                     ch.pipeline().addLast(new PacketDecoder(), new PacketEncoder(), new ServerHandler());
                 }
             }).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.TCP_NODELAY, true).childOption(ChannelOption.SO_KEEPALIVE, true);
-            PlayPacket pckt = new PlayPacket();
-            pckt.setId(1);
-            pckt.setUsername("test");
 
-            pckt.send(null);
             ChannelFuture f = b.bind(port).sync();
             f.channel().closeFuture().sync();
         } finally {
