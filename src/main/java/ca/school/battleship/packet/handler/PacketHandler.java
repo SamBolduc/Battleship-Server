@@ -1,6 +1,7 @@
-package ca.school.battleship.packet;
+package ca.school.battleship.packet.handler;
 
-import ca.school.battleship.game.packet.PlayPacket;
+import ca.school.battleship.game.packet.*;
+import ca.school.battleship.packet.GenericPacket;
 import com.google.common.collect.Sets;
 
 import java.util.Set;
@@ -11,6 +12,10 @@ public class PacketHandler {
 
     public PacketHandler() {
         this.registerPacket(1, PlayPacket.class);
+        this.registerPacket(2, PreparePacket.class);
+        this.registerPacket(3, EndPacket.class);
+        this.registerPacket(4, BoardPacket.class);
+        this.registerPacket(5, AttackPacket.class);
     }
 
     public Class<? extends GenericPacket> getClass(int packetId) {
