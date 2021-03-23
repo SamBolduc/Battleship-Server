@@ -16,6 +16,14 @@ public abstract class GenericPacket {
     public abstract void read(ChannelHandlerContext ctx);
 
     public void send(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush(Server.get().getGson().toJson(this));
+        ctx.writeAndFlush(this.asJsonMessage());
+    }
+
+    private JsonMessage asJsonMessage() {
+        JsonMessage msg = new JsonMessage();
+        msg.setPacketId(this.id);
+        msg.setContent(Server.get().getGson().toJson(this));
+
+        return msg;
     }
 }
