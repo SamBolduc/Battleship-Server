@@ -1,7 +1,6 @@
 package ca.school.battleship.packet.handler;
 
 import ca.school.battleship.Server;
-import ca.school.battleship.game.packet.PlayPacket;
 import ca.school.battleship.packet.GenericPacket;
 import ca.school.battleship.packet.JsonMessage;
 import ca.school.battleship.user.User;
@@ -13,18 +12,16 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        UserManager.get().getUsers().put(ctx.channel().id().asLongText(), new User(ctx.channel().id().asLongText(), ctx));
-
         super.channelActive(ctx);
-
-        PlayPacket pckt = new PlayPacket();
-        pckt.setUsername("DIIZA");
-        pckt.send(ctx);
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        UserManager.get().getUsers().remove(ctx.channel().id().asLongText());
+        User user = UserManager.get().byId(ctx);
+        if (user != null) {
+            user.disconnect();
+        }
+        
         super.channelInactive(ctx);
     }
 

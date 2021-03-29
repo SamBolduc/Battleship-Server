@@ -1,7 +1,9 @@
 package ca.school.battleship.game;
 
+import ca.school.battleship.game.packet.PlayPacket;
 import ca.school.battleship.user.User;
 import com.google.common.collect.Lists;
+import lombok.Getter;
 
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class GameManager {
         return instance;
     }
 
+    @Getter
     private List<Game> games = Lists.newArrayList();
 
     public GameManager() {
@@ -25,5 +28,20 @@ public class GameManager {
 
     public boolean hasGame(User user) {
         return this.getGame(user) != null;
+    }
+
+    public Game findGame(User user) {
+        Game game = this.games.stream().filter(g -> g.getState() == GameState.WAITING_OPPONENT).findFirst().orElse(null);
+
+        if (game != null) {
+            game.prepare(user);
+        }
+
+        if (game == null) {
+            this.games.add(game = new Game(user));
+            new PlayPacket(user.getName()).send(user); //Waiting for opponent
+        }
+
+        return game;
     }
 }

@@ -1,5 +1,6 @@
 package ca.school.battleship;
 
+import ca.school.battleship.game.Game;
 import ca.school.battleship.game.GameManager;
 import ca.school.battleship.packet.decoder.PacketDecoder;
 import ca.school.battleship.packet.encoder.PacketEncoder;
@@ -19,6 +20,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.Getter;
 
 import java.lang.reflect.Modifier;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @Getter
 public class Server {
@@ -30,6 +34,7 @@ public class Server {
 
     private Gson gson;
     private PacketHandler packetHandler;
+    private ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
     public Server(int port) {
         this.port = port;
@@ -47,6 +52,14 @@ public class Server {
     }
 
     public void run() throws Exception {
+
+        //Tick loop
+        this.executor.scheduleAtFixedRate(() -> {
+            for (Game game : GameManager.get().getGames()) {
+                game.tick();
+            }
+        }, 50, 50, TimeUnit.MILLISECONDS);
+
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
@@ -58,7 +71,7 @@ public class Server {
                 }
             }).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.TCP_NODELAY, true).childOption(ChannelOption.SO_KEEPALIVE, true);
 
-            ChannelFuture f = b.bind(port).sync();
+            ChannelFuture f = b.bind("127.0.0.1", port).sync();
             f.channel().closeFuture().sync();
         } finally {
             workerGroup.shutdownGracefully();
