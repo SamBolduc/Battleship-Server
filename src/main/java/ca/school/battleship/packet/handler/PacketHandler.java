@@ -2,24 +2,25 @@ package ca.school.battleship.packet.handler;
 
 import ca.school.battleship.game.packet.*;
 import ca.school.battleship.packet.GenericPacket;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
+import java.util.List;
 import java.util.Set;
 
 public class PacketHandler {
 
-    private Set<GenericPacket> packets = Sets.newHashSet();
+    private List<GenericPacket> packets = Lists.newArrayList();
 
     public PacketHandler() {
         this.registerPacket(1, PlayPacket.class);
-        this.registerPacket(2, PreparePacket.class);
-        this.registerPacket(3, EndPacket.class);
-        this.registerPacket(4, BoardPacket.class);
-        this.registerPacket(5, AttackPacket.class);
+        this.registerPacket(2, OpponentFoundPacket.class);
+        this.registerPacket(3, BoatPositionPacket.class);
+        this.registerPacket(4, GameStartPacket.class);
     }
 
     public GenericPacket getPacket(Class<? extends GenericPacket> clazz) {
-        return this.packets.stream().filter(el -> el.getClass().equals(clazz)).findFirst().orElse(null);
+        return this.packets.stream().filter(el -> el.getClass() == clazz).findFirst().orElse(null);
     }
 
     public Class<? extends GenericPacket> getClass(int packetId) {

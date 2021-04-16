@@ -1,6 +1,7 @@
 package ca.school.battleship.packet.handler;
 
 import ca.school.battleship.Server;
+import ca.school.battleship.game.GameManager;
 import ca.school.battleship.packet.GenericPacket;
 import ca.school.battleship.packet.JsonMessage;
 import ca.school.battleship.user.User;
@@ -12,6 +13,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        UserManager.get().getOrMake(ctx);
         super.channelActive(ctx);
     }
 

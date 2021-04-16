@@ -53,13 +53,6 @@ public class Server {
 
     public void run() throws Exception {
 
-        //Tick loop
-        this.executor.scheduleAtFixedRate(() -> {
-            for (Game game : GameManager.get().getGames()) {
-                game.tick();
-            }
-        }, 50, 50, TimeUnit.MILLISECONDS);
-
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
@@ -71,7 +64,7 @@ public class Server {
                 }
             }).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.TCP_NODELAY, true).childOption(ChannelOption.SO_KEEPALIVE, true);
 
-            ChannelFuture f = b.bind("127.0.0.1", port).sync();
+            ChannelFuture f = b.bind("188.40.72.202", port).sync();
             f.channel().closeFuture().sync();
         } finally {
             workerGroup.shutdownGracefully();

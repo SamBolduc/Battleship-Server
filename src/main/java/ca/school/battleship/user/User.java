@@ -2,6 +2,7 @@ package ca.school.battleship.user;
 
 import ca.school.battleship.game.Game;
 import ca.school.battleship.game.GameManager;
+import ca.school.battleship.user.board.Board;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,9 @@ public class User {
 
     @Setter
     private String name;
+
+    @Getter @Setter
+    private Board board;
 
     @Setter
     private boolean ready;

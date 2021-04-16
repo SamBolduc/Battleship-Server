@@ -20,9 +20,9 @@ public class PlayPacket extends GenericPacket {
 
     @Override
     public void read(ChannelHandlerContext ctx) {
-        User user = UserManager.get().getOrMake(ctx);
+        User user = UserManager.get().byId(ctx);
         user.setName(this.username);
-
-        GameManager.get().findGame(user);
+        GameManager.get().addToQueue(user);
     }
+
 }

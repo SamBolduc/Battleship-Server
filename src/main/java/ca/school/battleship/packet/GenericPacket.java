@@ -22,12 +22,6 @@ public abstract class GenericPacket {
         }
     }
 
-    public void send(ChannelHandlerContext... ctxs) {
-        for (ChannelHandlerContext ctx : ctxs) {
-            this.send(ctx);
-        }
-    }
-
     private void send(ChannelHandlerContext ctx) {
         this.setId(Server.get().getPacketHandler().getPacket(this.getClass()).getId());
         ctx.writeAndFlush(this.asJsonMessage());

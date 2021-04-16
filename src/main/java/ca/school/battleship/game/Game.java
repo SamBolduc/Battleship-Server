@@ -1,62 +1,58 @@
 package ca.school.battleship.game;
 
-import ca.school.battleship.game.packet.AttackPacket;
-import ca.school.battleship.game.packet.PreparePacket;
+import ca.school.battleship.game.packet.GameStartPacket;
+import ca.school.battleship.game.packet.OpponentFoundPacket;
 import ca.school.battleship.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
-import java.util.Random;
-
 @Getter
 public class Game {
 
-    private Random random = new Random();
-    private User attacker;
-
     @Setter
-    private User opponent;
+    private User player1;
+    @Getter
+    private User player2;
 
     private User turn;
 
-    private long startSecond;
-
     private GameState state;
 
-    public Game(User attacker) {
-        this.attacker = attacker;
-        this.state = GameState.WAITING_OPPONENT;
-    }
-
-    public void tick() {
-        if (this.state == GameState.PLACING_BOAT && Instant.now().getEpochSecond() > this.startSecond) {
-            //TODO: Gen random boat positions
-            this.start();
-        }
-    }
-
-    public void prepare(User opponent) {
-        this.opponent = opponent;
+    public Game(User player1, User player2) {
+        this.player1 = player1;
+        this.player2 = player2;
         this.state = GameState.PLACING_BOAT;
-        this.startSecond = Instant.now().plusSeconds(60).getEpochSecond();
+        this.notifyPlayers();
+    }
 
-        new PreparePacket().send(this.attacker, this.opponent);
+    private void notifyPlayers() {
+        new OpponentFoundPacket().send(this.player1, this.player2);
     }
 
     public void start() {
         this.state = GameState.RUNNING;
-        this.turn = this.random.nextBoolean() ? this.attacker : this.opponent;
 
-        new AttackPacket(this.turn.getCtx().channel().id().asLongText()).send(this.attacker, this.opponent);
+        GameStartPacket packet = new GameStartPacket();
+        this.turn = this.player1;
+
+        packet.setTurn(true);
+        packet.send(this.player1);
+
+        packet.setTurn(false);
+        packet.send(this.player2);
     }
 
     public void end(User looser) {
-        User winner = this.attacker == looser ? this.opponent : this.attacker;
+        User winner = this.player1 == looser ? this.player2 : this.player1;
         //TODO: Stop the game
     }
 
     public boolean allReady() {
-        return this.attacker.isReady() && this.opponent.isReady();
+        return this.player1.isReady() && this.player2.isReady();
+    }
+
+    public void startIfReady() {
+        if(this.getState().equals(GameState.PLACING_BOAT) && this.allReady())
+            this.start();
     }
 }
