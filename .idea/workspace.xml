@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" name="Default Changelist" comment="WIP multiplayer">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/packet/PlayerLeftPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/packet/PlayerWinPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/boat/Boat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/packet/AttackPacket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/packet/handler/PacketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/packet/handler/PacketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/packet/handler/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/packet/handler/ServerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/board/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/board/BoatPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/board/BoatPosition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/battleship-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/battleship-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/game/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/packet/handler/PacketHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/packet/handler/PacketHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/packet/handler/ServerHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/packet/handler/ServerHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/board/BoatPosition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/board/BoatPosition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-battleship-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-battleship-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,20 +48,32 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ca.school.battleship.game.boat" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ca.school.battleship.game.packet" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -114,6 +117,7 @@
       <workItem from="1618523874952" duration="7063000" />
       <workItem from="1618584098893" duration="24000" />
       <workItem from="1619155659313" duration="3691000" />
+      <workItem from="1619161800935" duration="4741000" />
     </task>
     <task id="LOCAL-00001" summary="WIP multiplayer">
       <created>1618536522631</created>

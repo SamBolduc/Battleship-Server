@@ -52,7 +52,7 @@ public class Game {
         looser.setBoard(null);
         winner.setBoard(null);
 
-        if(this.state.equals(GameState.RUNNING)) {
+        if (this.state.equals(GameState.RUNNING)) {
             new PlayerWinPacket().send(winner);
         } else {
             new PlayerLeftPacket().send(winner);
@@ -61,13 +61,20 @@ public class Game {
         GameManager.get().getGames().remove(this);
     }
 
+    public User getOpponent(User user) {
+        return this.player1 == user ? this.player2 : this.player1;
+    }
+
     public boolean allReady() {
         return this.player1.isReady() && this.player2.isReady();
     }
 
     public void startIfReady() {
-        if(this.getState().equals(GameState.PLACING_BOAT) && this.allReady())
-            this.start();
+        if (this.getState().equals(GameState.PLACING_BOAT) && this.allReady()) this.start();
     }
 
+    public int attack(User attacker, float x, float y) {
+        User opponent = this.getOpponent(attacker);
+        return opponent.getBoard().attack(25, x, y);
+    }
 }

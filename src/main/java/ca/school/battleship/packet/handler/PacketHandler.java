@@ -3,10 +3,8 @@ package ca.school.battleship.packet.handler;
 import ca.school.battleship.game.packet.*;
 import ca.school.battleship.packet.GenericPacket;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 import java.util.List;
-import java.util.Set;
 
 public class PacketHandler {
 
@@ -19,6 +17,7 @@ public class PacketHandler {
         this.registerPacket(4, GameStartPacket.class);
         this.registerPacket(5, PlayerWinPacket.class);
         this.registerPacket(6, PlayerLeftPacket.class);
+        this.registerPacket(7, AttackPacket.class);
     }
 
     public GenericPacket getPacket(Class<? extends GenericPacket> clazz) {
