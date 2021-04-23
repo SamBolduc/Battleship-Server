@@ -5,8 +5,7 @@ import lombok.Setter;
 
 public class BoatPosition {
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private float x;
     @Getter @Setter
     private float y;

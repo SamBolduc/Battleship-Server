@@ -19,7 +19,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        User user = UserManager.get().byId(ctx);
+        User user = UserManager.get().getOrMake(ctx);
         if (user != null) {
             user.disconnect();
         }
@@ -38,6 +38,11 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        User user = UserManager.get().byId(ctx);
+        if (user != null) {
+            user.disconnect();
+        }
+
         System.out.println("Exception: " + cause.getMessage());
         //        super.exceptionCaught(ctx, cause);
     }

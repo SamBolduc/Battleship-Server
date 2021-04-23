@@ -17,6 +17,8 @@ public class PacketHandler {
         this.registerPacket(2, OpponentFoundPacket.class);
         this.registerPacket(3, BoatPositionPacket.class);
         this.registerPacket(4, GameStartPacket.class);
+        this.registerPacket(5, PlayerWinPacket.class);
+        this.registerPacket(6, PlayerLeftPacket.class);
     }
 
     public GenericPacket getPacket(Class<? extends GenericPacket> clazz) {

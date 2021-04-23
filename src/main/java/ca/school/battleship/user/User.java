@@ -36,6 +36,8 @@ public class User {
 
     public void disconnect() {
         Game game = this.getGame();
-
+        if(game != null) {
+            game.end(this);
+        }
     }
 }

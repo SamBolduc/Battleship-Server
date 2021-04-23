@@ -2,6 +2,8 @@ package ca.school.battleship.game;
 
 import ca.school.battleship.game.packet.GameStartPacket;
 import ca.school.battleship.game.packet.OpponentFoundPacket;
+import ca.school.battleship.game.packet.PlayerLeftPacket;
+import ca.school.battleship.game.packet.PlayerWinPacket;
 import ca.school.battleship.user.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,7 +46,19 @@ public class Game {
 
     public void end(User looser) {
         User winner = this.player1 == looser ? this.player2 : this.player1;
-        //TODO: Stop the game
+
+        looser.setReady(false);
+        winner.setReady(false);
+        looser.setBoard(null);
+        winner.setBoard(null);
+
+        if(this.state.equals(GameState.RUNNING)) {
+            new PlayerWinPacket().send(winner);
+        } else {
+            new PlayerLeftPacket().send(winner);
+        }
+
+        GameManager.get().getGames().remove(this);
     }
 
     public boolean allReady() {
@@ -55,4 +69,5 @@ public class Game {
         if(this.getState().equals(GameState.PLACING_BOAT) && this.allReady())
             this.start();
     }
+
 }
