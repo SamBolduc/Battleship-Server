@@ -1,7 +1,6 @@
 package ca.school.battleship.packet.handler;
 
 import ca.school.battleship.Server;
-import ca.school.battleship.game.GameManager;
 import ca.school.battleship.packet.GenericPacket;
 import ca.school.battleship.packet.JsonMessage;
 import ca.school.battleship.user.User;
@@ -13,18 +12,22 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        UserManager.get().getOrMake(ctx);
+        User user = UserManager.get().getOrMake(ctx);
+
+        System.out.println("User " + user.getId() + " joined the game.");
         super.channelActive(ctx);
     }
 
     @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
         User user = UserManager.get().getOrMake(ctx);
         if (user != null) {
             user.disconnect();
+
+            System.out.println("User " + user.getId() + " disconnected.");
         }
-        
-        super.channelInactive(ctx);
+
+        super.channelUnregistered(ctx);
     }
 
     @Override

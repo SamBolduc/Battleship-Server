@@ -31,6 +31,12 @@ public class User {
         this.ctx = ctx;
     }
 
+    public String getId() {
+        if (this.ctx == null) return "-1";
+
+        return this.ctx.channel().id().asLongText();
+    }
+
     public Game getGame() {
         return GameManager.get().getGame(this);
     }
