@@ -1,6 +1,5 @@
 package ca.school.battleship;
 
-import ca.school.battleship.game.Game;
 import ca.school.battleship.game.GameManager;
 import ca.school.battleship.packet.decoder.PacketDecoder;
 import ca.school.battleship.packet.encoder.PacketEncoder;
@@ -22,7 +21,6 @@ import lombok.Getter;
 import java.lang.reflect.Modifier;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 @Getter
 public class Server {
@@ -64,7 +62,8 @@ public class Server {
                 }
             }).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.TCP_NODELAY, true).childOption(ChannelOption.SO_KEEPALIVE, true);
 
-            ChannelFuture f = b.bind("188.40.72.202", port).sync();
+            //            ChannelFuture f = b.bind("51.195.60.90", port).sync();
+            ChannelFuture f = b.bind("127.0.0.1", port).sync();
             f.channel().closeFuture().sync();
         } finally {
             workerGroup.shutdownGracefully();

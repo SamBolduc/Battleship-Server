@@ -13,7 +13,8 @@ public class User {
     @Setter
     private String name;
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private Board board;
 
     @Setter
@@ -35,8 +36,9 @@ public class User {
     }
 
     public void disconnect() {
+        UserManager.get().getUsers().remove(this);
         Game game = this.getGame();
-        if(game != null) {
+        if (game != null) {
             game.end(this);
         }
     }
