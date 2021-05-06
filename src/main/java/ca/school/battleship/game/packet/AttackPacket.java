@@ -18,6 +18,7 @@ public class AttackPacket extends GenericPacket {
 
     private float x;
     private float y;
+    private int damageDealt;
 
     @Override
     public void read(ChannelHandlerContext ctx) {
@@ -27,6 +28,11 @@ public class AttackPacket extends GenericPacket {
         if (game == null) return;
         if (game.getState() != GameState.RUNNING) return;
 
-        game.attack(user, this.x, this.y);
+        this.damageDealt = game.attack(user, 33, this.x, this.y);
+        this.send(user);
+
+        if (this.damageDealt > 0) {
+            game.sendBoatsStatus(game.getPlayer1(), game.getPlayer2());
+        }
     }
 }

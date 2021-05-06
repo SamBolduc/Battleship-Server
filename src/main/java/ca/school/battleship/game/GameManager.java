@@ -1,6 +1,5 @@
 package ca.school.battleship.game;
 
-import ca.school.battleship.game.packet.PlayPacket;
 import ca.school.battleship.user.User;
 import com.google.common.collect.Lists;
 import lombok.Getter;
@@ -34,25 +33,20 @@ public class GameManager {
     }
 
     public void addToQueue(User user) {
-        if(hasGame(user))
-            return;
-        if(queue.contains(user))
-            return;
+        if (hasGame(user)) return;
+        if (queue.contains(user)) return;
         queue.add(user);
         this.linkWaitingQueue();
     }
 
     public void linkWaitingQueue() {
-        if(this.queue.size() <= 1)
-            return;
+        if (this.queue.size() <= 1) return;
 
-        User player1 = this.queue.get(0);
-        User player2 = this.queue.get(1);
+        User player1 = this.queue.remove(0);
+        User player2 = this.queue.remove(0);
 
         Game game = new Game(player1, player2);
         this.games.add(game);
-        this.queue.remove(player1);
-        this.queue.remove(player2);
     }
 
 }

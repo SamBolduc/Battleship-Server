@@ -4,14 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" name="Default Changelist" comment="WIP multiplayer">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/boat/Boat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/packet/AttackPacket.java" afterDir="false" />
+    <list default="true" id="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" name="Default Changelist" comment="Add logging &amp; handle properly user disconnect">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/AttackType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/packet/BoatStatusPacket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/boat/Boat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/boat/Boat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/packet/AttackPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/packet/AttackPacket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/packet/handler/PacketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/packet/handler/PacketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/packet/handler/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/packet/handler/ServerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/board/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/board/BoatPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/board/BoatPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/game/GameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/game/GameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/packet/handler/ServerHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/packet/handler/ServerHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/User.class" afterDir="false" />
+    </list>
+    <list id="b793cffb-1fe6-4d8b-8318-d2cca8129954" name="Ignored" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/battleship-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/battleship-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/Server$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/Server$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/game/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/packet/handler/PacketHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/packet/handler/PacketHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/board/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/board/BoatPosition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/board/BoatPosition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-battleship-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-battleship-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +43,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -36,7 +58,31 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="6" end1="9" start2="6" end2="9" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="11" end1="11" start2="11" end2="14" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="12" end1="12" start2="15" end2="16" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="14" end1="14" start2="18" end2="35" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="24" end1="24" start2="45" end2="46" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="38" end1="38" start2="60" end2="81" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="39" end1="39" start2="82" end2="85" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="54" end1="54" start2="100" end2="101" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="66" end1="68" start2="113" end2="122" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="73" end1="76" start2="127" end2="128" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="106" end1="106" start2="158" end2="162" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="111" end1="111" start2="167" end2="168" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="120" end1="120" start2="177" end2="178" changelist="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" />
+        <range start1="128" end1="129" start2="186" end2="201" changelist="b793cffb-1fe6-4d8b-8318-d2cca8129954" />
+        <range start1="148" end1="149" start2="220" end2="223" changelist="b793cffb-1fe6-4d8b-8318-d2cca8129954" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectId" id="1rA8PUhNl0cvrGbsIHBGjYIoBMt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -52,6 +98,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
@@ -64,16 +111,21 @@
       <recent name="ca.school.battleship.game.packet" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Run">
+    <configuration name="Run" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="ca.school.battleship.Server" />
+      <module name="Battleship-Server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -104,11 +156,16 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.Run" />
+      <item itemvalue="Maven.battleship [clean,install]" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" name="Default Changelist" comment="" />
+      <changelist id="b793cffb-1fe6-4d8b-8318-d2cca8129954" name="Ignored" comment="" />
       <created>1618407509830</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -118,6 +175,7 @@
       <workItem from="1618584098893" duration="24000" />
       <workItem from="1619155659313" duration="3691000" />
       <workItem from="1619161800935" duration="4741000" />
+      <workItem from="1620262620617" duration="25275000" />
     </task>
     <task id="LOCAL-00001" summary="WIP multiplayer">
       <created>1618536522631</created>

@@ -18,6 +18,7 @@ public class PacketHandler {
         this.registerPacket(5, PlayerWinPacket.class);
         this.registerPacket(6, PlayerLeftPacket.class);
         this.registerPacket(7, AttackPacket.class);
+        this.registerPacket(8, BoatStatusPacket.class);
     }
 
     public GenericPacket getPacket(Class<? extends GenericPacket> clazz) {

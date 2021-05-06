@@ -1,12 +1,14 @@
 package ca.school.battleship.game;
 
-import ca.school.battleship.game.packet.GameStartPacket;
-import ca.school.battleship.game.packet.OpponentFoundPacket;
-import ca.school.battleship.game.packet.PlayerLeftPacket;
-import ca.school.battleship.game.packet.PlayerWinPacket;
+import ca.school.battleship.game.boat.Boat;
+import ca.school.battleship.game.packet.*;
 import ca.school.battleship.user.User;
+import ca.school.battleship.user.board.BoatPosition;
+import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 public class Game {
@@ -62,7 +64,7 @@ public class Game {
     }
 
     public User getOpponent(User user) {
-        return this.player1 == user ? this.player2 : this.player1;
+        return this.player1.equals(user) ? this.player2 : this.player1;
     }
 
     public boolean allReady() {
@@ -73,8 +75,33 @@ public class Game {
         if (this.getState().equals(GameState.PLACING_BOAT) && this.allReady()) this.start();
     }
 
-    public int attack(User attacker, float x, float y) {
+    public int attack(User attacker, int maxDamage, float x, float y) {
         User opponent = this.getOpponent(attacker);
-        return opponent.getBoard().attack(25, x, y);
+
+        return opponent.getBoard().attack(50, maxDamage, x, y);
+    }
+
+    private void sendBoatsStatus(User target) {
+        BoatStatusPacket packet = new BoatStatusPacket();
+
+        List<Boat> myBoats = Lists.newArrayList();
+        for (BoatPosition position : target.getBoard().getBoats()) {
+            myBoats.add(position.getBoat());
+        }
+
+        List<Boat> enemyBoats = Lists.newArrayList();
+        for (BoatPosition position : target.getBoard().getBoats()) {
+            enemyBoats.add(position.getBoat());
+        }
+
+        packet.setMyBoats(myBoats);
+        packet.setEnemyBoats(enemyBoats);
+        packet.send(target);
+    }
+
+    public void sendBoatsStatus(User... users) {
+        for (User user : users) {
+            this.sendBoatsStatus(user);
+        }
     }
 }
