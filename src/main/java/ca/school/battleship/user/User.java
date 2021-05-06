@@ -20,6 +20,10 @@ public class User {
     @Setter
     private boolean ready;
 
+    @Getter
+    @Setter
+    private boolean turn;
+
     private ChannelHandlerContext ctx;
 
     public User(ChannelHandlerContext ctx) {

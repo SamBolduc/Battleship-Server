@@ -34,5 +34,7 @@ public class AttackPacket extends GenericPacket {
         if (this.damageDealt > 0) {
             game.sendBoatsStatus(game.getPlayer1(), game.getPlayer2());
         }
+
+        game.switchTurn();
     }
 }

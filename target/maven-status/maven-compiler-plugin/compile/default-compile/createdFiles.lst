@@ -1,9 +1,13 @@
+ca\school\battleship\game\packet\PlayerWinPacket.class
 ca\school\battleship\game\Game.class
-ca\school\battleship\Server.class
 ca\school\battleship\user\User.class
+ca\school\battleship\Server.class
+ca\school\battleship\game\packet\AttackPacket.class
 ca\school\battleship\user\board\Board.class
+ca\school\battleship\game\packet\PlayerLeftPacket.class
 ca\school\battleship\game\GameState.class
 ca\school\battleship\packet\encoder\PacketEncoder.class
+ca\school\battleship\game\boat\Boat.class
 ca\school\battleship\game\packet\BoatPositionPacket.class
 ca\school\battleship\user\board\BoatPosition.class
 ca\school\battleship\packet\GenericPacket.class
@@ -16,4 +20,5 @@ ca\school\battleship\packet\handler\ServerHandler.class
 ca\school\battleship\user\UserManager.class
 ca\school\battleship\game\packet\PlayPacket.class
 ca\school\battleship\packet\JsonMessage.class
+ca\school\battleship\game\boat\Boat$BoatSize.class
 ca\school\battleship\game\GameManager.class

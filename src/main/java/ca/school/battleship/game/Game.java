@@ -18,8 +18,6 @@ public class Game {
     @Getter
     private User player2;
 
-    private User turn;
-
     private GameState state;
 
     public Game(User player1, User player2) {
@@ -27,6 +25,7 @@ public class Game {
         this.player2 = player2;
         this.state = GameState.PLACING_BOAT;
         this.notifyPlayers();
+        this.switchTurn();
     }
 
     private void notifyPlayers() {
@@ -37,7 +36,7 @@ public class Game {
         this.state = GameState.RUNNING;
 
         GameStartPacket packet = new GameStartPacket();
-        this.turn = this.player1;
+        this.player1.setTurn(true);
 
         packet.setTurn(true);
         packet.send(this.player1);
@@ -79,6 +78,14 @@ public class Game {
         User opponent = this.getOpponent(attacker);
 
         return opponent.getBoard().attack(50, maxDamage, x, y);
+    }
+
+    public void switchTurn() {
+        this.player1.setTurn(!this.player1.isTurn());
+        this.player2.setTurn(!this.player1.isTurn());
+
+        new TurnPacket(this.player1.isTurn()).send(this.player1);
+        new TurnPacket(this.player2.isTurn()).send(this.player2);
     }
 
     private void sendBoatsStatus(User target) {
