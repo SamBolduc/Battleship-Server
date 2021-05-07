@@ -4,26 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" name="Default Changelist" comment="WIP">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/packet/TurnPacket.java" afterDir="false" />
+    <list default="true" id="a6ee986a-7fa9-46aa-a93e-67db43fe6fc4" name="Default Changelist" comment="Add logging &amp; handle properly user disconnect">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/packet/AttackPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/game/packet/AttackPacket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/packet/handler/PacketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/packet/handler/PacketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/school/battleship/user/board/Board.java" afterDir="false" />
     </list>
-    <list id="b793cffb-1fe6-4d8b-8318-d2cca8129954" name="Ignored" comment="Ignored">
-      <change beforePath="$PROJECT_DIR$/target/battleship-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/battleship-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/Server$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/Server$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/Server.class" afterDir="false" />
+    <list id="b793cffb-1fe6-4d8b-8318-d2cca8129954" name="Ignored" comment="">
       <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/game/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/packet/handler/PacketHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/packet/handler/PacketHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/board/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/board/BoatPosition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ca/school/battleship/user/board/BoatPosition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-battleship-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-battleship-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,19 +77,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="battleship [clean,install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -147,8 +122,7 @@
       <workItem from="1618584098893" duration="24000" />
       <workItem from="1619155659313" duration="3691000" />
       <workItem from="1619161800935" duration="4741000" />
-      <workItem from="1620262620617" duration="27840000" />
-      <workItem from="1620337763824" duration="3430000" />
+      <workItem from="1620262620617" duration="25275000" />
     </task>
     <task id="LOCAL-00001" summary="WIP multiplayer">
       <created>1618536522631</created>
@@ -157,28 +131,7 @@
       <option name="project" value="LOCAL" />
       <updated>1618536522631</updated>
     </task>
-    <task id="LOCAL-00002" summary="Remove user from list if he disconnect">
-      <created>1620268186170</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1620268186170</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Add logging &amp; handle properly user disconnect">
-      <created>1620269785359</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1620269785359</updated>
-    </task>
-    <task id="LOCAL-00004" summary="WIP">
-      <created>1620335055606</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1620335055606</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,9 +151,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="WIP multiplayer" />
-    <MESSAGE value="Remove user from list if he disconnect" />
-    <MESSAGE value="Add logging &amp; handle properly user disconnect" />
-    <MESSAGE value="WIP" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP multiplayer" />
   </component>
 </project>

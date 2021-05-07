@@ -41,7 +41,7 @@ public class Board {
     private int getMaxDamage(AttackType type) {
         switch (type) {
             case SINGLE:
-                return 33;
+                return 50;
         }
 
         return 0;

@@ -77,7 +77,7 @@ public class Game {
     public int attack(User attacker, int maxDamage, float x, float y) {
         User opponent = this.getOpponent(attacker);
 
-        return opponent.getBoard().attack(50, maxDamage, x, y);
+        return opponent.getBoard().attack(75, maxDamage, x, y);
     }
 
     public void switchTurn() {
@@ -90,6 +90,7 @@ public class Game {
 
     private void sendBoatsStatus(User target) {
         BoatStatusPacket packet = new BoatStatusPacket();
+        User opponent = this.getOpponent(target);
 
         List<Boat> myBoats = Lists.newArrayList();
         for (BoatPosition position : target.getBoard().getBoats()) {
@@ -97,7 +98,7 @@ public class Game {
         }
 
         List<Boat> enemyBoats = Lists.newArrayList();
-        for (BoatPosition position : target.getBoard().getBoats()) {
+        for (BoatPosition position : opponent.getBoard().getBoats()) {
             enemyBoats.add(position.getBoat());
         }
 
