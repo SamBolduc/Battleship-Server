@@ -19,7 +19,7 @@ public class Board {
         int ret = 0;
         for (BoatPosition position : this.boats) {
             if (position == null) continue;
-            
+
             Boat boat = position.getBoat();
             if (boat.isDeath()) continue;
 
@@ -36,6 +36,14 @@ public class Board {
         }
 
         return ret;
+    }
+
+    public boolean allDeath() {
+        for (BoatPosition position : this.boats) {
+            if (position != null && position.getBoat().getCurrentHealth() > 0) return false;
+        }
+
+        return true;
     }
 
     private int getMaxDamage(AttackType type) {

@@ -48,6 +48,9 @@ public class Game {
     public void end(User looser) {
         User winner = this.player1 == looser ? this.player2 : this.player1;
 
+        winner.setTurn(false);
+        looser.setTurn(false);
+
         looser.setReady(false);
         winner.setReady(false);
         looser.setBoard(null);

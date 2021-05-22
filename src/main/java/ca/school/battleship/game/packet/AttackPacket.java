@@ -22,18 +22,24 @@ public class AttackPacket extends GenericPacket {
 
     @Override
     public void read(ChannelHandlerContext ctx) {
-        User user = UserManager.get().byId(ctx);
+        User target = UserManager.get().byId(ctx);
 
-        Game game = GameManager.get().getGame(user);
+        Game game = GameManager.get().getGame(target);
         if (game == null) return;
         if (game.getState() != GameState.RUNNING) return;
 
-        this.damageDealt = game.attack(user, 33, this.x, this.y);
-        this.send(user);
+        this.damageDealt = game.attack(target, 33, this.x, this.y);
+        this.send(target);
 
         if (this.damageDealt > 0) {
             game.sendBoatsStatus(game.getPlayer1(), game.getPlayer2());
         }
+
+        if (target.getBoard().allDeath()) {
+            game.end(target);
+            return;
+        }
+
 
         game.switchTurn();
     }

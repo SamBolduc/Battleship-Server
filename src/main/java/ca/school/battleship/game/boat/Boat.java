@@ -47,19 +47,19 @@ public class Boat {
         return this.getDistance(x, y, position.getX() - splitWidth, position.getY() - splitHeight, position.getX() + splitWidth, position.getY() + splitHeight);
     }
 
-    public double getDistance(double x, double y, double x_min, double y_min, double x_max, double y_max) {
-        if (x < x_min) {
-            if (y < y_min) return HYPOT(x_min - x, y_min - y);
-            if (y <= y_max) return x_min - x;
-            return HYPOT(x_min - x, y_max - y);
-        } else if (x <= x_max) {
-            if (y < y_min) return y_min - y;
-            if (y <= y_max) return 0;
-            return y - y_max;
+    public double getDistance(double attackX, double attackY, double xMin, double yMin, double xMax, double yMax) {
+        if (attackX < xMin) {
+            if (attackY < yMin) return HYPOT(xMin - attackX, yMin - attackY);
+            if (attackY <= yMax) return xMin - attackX;
+            return HYPOT(xMin - attackX, yMax - attackY);
+        } else if (attackX <= xMax) {
+            if (attackY < yMin) return yMin - attackY;
+            if (attackY <= yMax) return 0;
+            return attackY - yMax;
         } else {
-            if (y < y_min) return HYPOT(x_max - x, y_min - y);
-            if (y <= y_max) return x - x_max;
-            return HYPOT(x_max - x, y_max - y);
+            if (attackY < yMin) return HYPOT(xMax - attackX, yMin - attackY);
+            if (attackY <= yMax) return attackX - xMax;
+            return HYPOT(xMax - attackX, yMax - attackY);
         }
     }
 

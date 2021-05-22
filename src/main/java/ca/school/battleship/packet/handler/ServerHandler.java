@@ -33,7 +33,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         JsonMessage jsonMessage = (JsonMessage) msg;
-        
+
         GenericPacket packet = Server.get().getGson().fromJson(jsonMessage.getContent(), Server.get().getPacketHandler().getClass(jsonMessage.getPacketId()));
         packet.setId(jsonMessage.getPacketId());
         packet.read(ctx);
@@ -50,8 +50,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             System.out.println("Exception: " + cause.getMessage());
             cause.printStackTrace();
         }
-
-        //        super.exceptionCaught(ctx, cause);
     }
 
 }
